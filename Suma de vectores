@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <math.h>
+#define sf scanf
+#define pf printf
+
+int main (void){
+
+int n,i;
+pf("Dime la dimension de tus vectores a sumar\n");
+sf("%i", &n);
+
+int vector1[n];
+int vector2[n];
+int suma[n];
+
+pf("\n");
+pf("Ingresa Vector 1:\n");
+for(i=0;i<n;i++){
+  	pf("Componente %i: ",i+1);
+  	sf("%i",&vector1[i]);
+}
+
+pf("\n");
+pf("Ingresa Vector 2:\n");
+for(i=0;i<n;i++){
+  	pf("Componente %i: ",i+1);
+  	sf("%i",&vector2[i]);
+
+}
+
+pf("\n");
+pf("Tus vectores son:\n");
+for(i=0;i<n;i++){
+	pf ("%i      %i\n", vector1[i],vector2[i]);
+}
+
+pf("La suma de tus vectores es: \n");
+for(i=0;i<n;i++){
+	suma[i]=vector1[i]+vector2[i];
+	pf("%i\n",suma[i]);
+}
+return 0;
+}

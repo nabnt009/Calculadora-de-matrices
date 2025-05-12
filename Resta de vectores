@@ -59,7 +59,7 @@ switch(op){
 	break;
 	
 	default:
-		pf("Ingresa una opcion valida (1 o 2)");
+		pf("Ingresa una opcion valida (1 o 2)");//Solo falta el ciclo por si la opcion es invalida y q vuelva a preguntar
 	break;
 }
 

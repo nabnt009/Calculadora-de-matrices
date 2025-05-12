@@ -1,0 +1,68 @@
+#include <stdio.h>
+#include <math.h>
+#define sf scanf
+#define pf printf
+
+int main (void){
+
+int n,i,op;
+pf("Dime la dimension de tus vectores a restar\n");
+sf("%i", &n);
+
+int vector1[n];
+int vector2[n];
+int resta[n];
+
+pf("\n");
+pf("Ingresa Vector 1:\n");
+for(i=0;i<n;i++){
+  	pf("Componente %i: ",i+1);
+  	sf("%i",&vector1[i]);
+}
+
+pf("\n");
+pf("Ingresa Vector 2:\n");
+for(i=0;i<n;i++){
+  	pf("Componente %i: ",i+1);
+  	sf("%i",&vector2[i]);
+
+}
+
+pf("\n");
+pf("Tus vectores son:\n");
+for(i=0;i<n;i++){
+	pf ("%i      %i\n", vector1[i],vector2[i]);
+}
+
+pf("\n");
+pf("Elige el orden de la resta:\n");
+pf("1)vector1-vector2     2)vector2-vector1\n");
+sf("%i",&op);
+pf("\n");
+
+switch(op){
+	
+	case 1:
+		pf("La resta de tus vectores es: \n");
+		for(i=0;i<n;i++){
+		resta[i]=vector1[i]-vector2[i];
+		pf("%i\n",resta[i]);
+		}
+	break;
+	
+	case 2:
+		pf("La resta de tus vectores es: \n");
+		for(i=0;i<n;i++){
+		resta[i]=vector2[i]-vector1[i];
+		pf("%i\n",resta[i]);
+		}
+	break;
+	
+	default:
+		pf("Ingresa una opcion valida (1 o 2)");
+	break;
+}
+
+
+return 0;
+}

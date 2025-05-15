@@ -1,0 +1,38 @@
+#include <stdio.h>
+#define sf scanf
+#define pf printf
+#define max 30
+
+int PideNumero();
+void RellenaVector(float vector[max], int fila);
+void SumaDeVectores(float vectorsuma[max],float vec1[max],float vec2[max],int fila);
+
+int main(void){
+
+}
+
+int PideNumero(){
+    int n;
+    pf("Dame un numero\n");
+    sf("%i",&n);
+    return n;
+
+}
+
+void RellenaVector(float vector[max], int fila){
+    int i;
+    pf("Ingresa las componentes de tu vector:\n");
+    for(i=0;i<fila;i++){
+        pf("Componente %i: ",i+1);
+        sf("%f", &vector[i]);
+    }
+}
+
+void SumaDeVectores(float vectorsuma[max],float vec1[max],float vec2[max],int fila){
+    int i;
+pf("Tu vector resultante es: \n");
+    for(i=0;i<fila;i++){
+        vectorsuma[i]=vec1[i]+vec2[i];
+        pf("%.2f \n", vectorsuma[i]);
+    }
+}

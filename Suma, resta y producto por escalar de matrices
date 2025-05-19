@@ -1,0 +1,102 @@
+#include <stdio.h>
+#define pf printf
+#define sf scanf
+#define MAX 100 //tamaño
+
+void llenar(int filas, int columnas, int matriz[MAX][MAX]);
+void imprimir(int filas, int columnas, int matriz[MAX][MAX]);
+void suma(int filas, int columnas, int matrizA[MAX][MAX], int matrizB[MAX][MAX], int matrizC[MAX][MAX]);
+void resta(int filas, int columnas, int matrizA[MAX][MAX], int matrizB[MAX][MAX], int matrizC[MAX][MAX]);
+void prodesc(int filas, int columnas, int matrizA[MAX][MAX], int esc, int matrizC[MAX][MAX]);
+
+int main() {
+    int filas, columnas, opcion;
+    int matrizA[MAX][MAX], matrizB[MAX][MAX], matrizC[MAX][MAX];
+    int escalar;
+
+    pf("¿Cuantas filas quieres en las matrices? \n");
+    sf("%d", &filas);
+    pf("¿Cuantas columnas? \n");
+    sf("%d", &columnas);
+    pf("¿Qué operación deseas realizar?\n");
+    pf("1. Sumar   2. Restar:   3. Producto por escalar \n");
+    sf("%d", &opcion);
+    llenar(filas, columnas, matrizA);
+    if (opcion==3)
+    {
+        printf("dar escalar\n");
+        sf("%i",&escalar);
+    }
+    else
+    {
+        llenar(filas, columnas,matrizB);
+    }
+
+    switch (opcion) {
+        case 1:
+            suma(filas, columnas, matrizA, matrizB, matrizC);
+            pf("El resultado de la suma:\n");
+            imprimir(filas, columnas, matrizC);
+            break;
+        case 2:
+            resta(filas, columnas, matrizA, matrizB, matrizC);
+            pf("\nResultado de la resta:\n");
+            imprimir(filas, columnas, matrizC);
+            break;
+        case 3:
+            prodesc(filas, columnas, matrizA, escalar, matrizC);
+            pf("\nResultado del producto:\n");
+            imprimir(filas, columnas, matrizC);
+            break;
+        default:
+            pf("Error\n");
+            break;
+    }
+
+    return 0;
+}
+
+void llenar(int filas, int columnas, int matriz[MAX][MAX]) {
+    pf("Escribe los valores:\n");
+    for (int i = 0; i < filas; i++) {
+        for (int j = 0; j < columnas; j++) {
+            pf("[%d][%d]: ", i, j);
+            sf("%d", &matriz[i][j]);
+        }
+    }
+}
+
+void imprimir(int filas, int columnas, int matriz[MAX][MAX]) {
+    for (int i = 0; i < filas; i++) {
+        for (int j = 0; j < columnas; j++) {
+            pf("%d\t", matriz[i][j]);
+        }
+        pf("\n");
+    }
+}
+
+void suma(int filas, int columnas, int matrizA[MAX][MAX], int matrizB[MAX][MAX], int matrizC[MAX][MAX]) {
+    for (int i = 0; i < filas; i++) {
+        for (int j = 0; j < columnas; j++) {
+            matrizC[i][j] = matrizA[i][j] + matrizB[i][j];
+        }
+    }
+}
+
+void resta(int filas, int columnas, int matrizA[MAX][MAX], int matrizB[MAX][MAX], int matrizC[MAX][MAX]) {
+    for (int i = 0; i < filas; i++) {
+        for (int j = 0; j < columnas; j++) {
+            matrizC[i][j] = matrizA[i][j] - matrizB[i][j];
+        }
+    }
+}
+
+void prodesc(int filas, int columnas, int matrizA[MAX][MAX], int esc, int matrizC[MAX][MAX])
+{
+    for (int i = 0; i < filas; i++)
+        {
+        for (int j = 0; j < columnas; j++) {
+            matrizC[i][j] = matrizA[i][j] * esc;
+        }
+}
+}

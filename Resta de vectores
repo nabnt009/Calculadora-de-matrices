@@ -5,7 +5,8 @@
 
 int PideNumero();
 void RellenaVector(float vector[max], int fila);
-void RestaDeVectores(float vectorResta[max],float vec1[max],float vec2[max],int fila);
+void RestaDeVectores1(float vectorResta[max],float vec1[max],float vec2[max],int fila);
+void RestaDeVectores2(float vectorResta[max],float vec1[max],float vec2[max],int fila);
 
 int main(void){
     int a;

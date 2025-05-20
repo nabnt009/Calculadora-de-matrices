@@ -1,68 +1,83 @@
 #include <stdio.h>
-#include <math.h>
 #define sf scanf
 #define pf printf
+#define max 30
 
-int main (void){
+int PideNumero();
+void RellenaVector(float vector[max], int fila);
+void RestaDeVectores(float vectorResta[max],float vec1[max],float vec2[max],int fila);
 
-int n,i,op;
-pf("Dime la dimension de tus vectores a restar\n");
-sf("%i", &n);
+int main(void){
+    int a;
+   
+    pf("Ingresa dimension de tus vectores:\n");
+    a=PideNumero();
+    
+    float Resta[a];
+    
+    pf("Ingresa vector 1:\n");
+    float vector1[a];
+    RellenaVector(vector1,a);
+    
+    float vector2[a];
+    pf("Ingresa vector 2:\n");
+    RellenaVector(vector2,a);
 
-int vector1[n];
-int vector2[n];
-int resta[n];
+    pf("Indica el orden de tu resta\n");
+    int op;
+    pf("Opcion 1)vector 1 - Vector 2\n");
+    pf("Opcion 2)vector 2 - Vector 1\n");
+    sf("%i",&op);
 
-pf("\n");
-pf("Ingresa Vector 1:\n");
-for(i=0;i<n;i++){
-  	pf("Componente %i: ",i+1);
-  	sf("%i",&vector1[i]);
+    switch(op){
+        case 1:
+        RestaDeVectores1(Resta,vector1,vector2,a);
+        break;
+
+        case 2:
+        RestaDeVectores2(Resta,vector1,vector2,a);
+        break;
+
+        default:
+        pf("Ingresa opcion correcta\n");
+        break;
+    
+    }
+
+    return 0;
 }
 
-pf("\n");
-pf("Ingresa Vector 2:\n");
-for(i=0;i<n;i++){
-  	pf("Componente %i: ",i+1);
-  	sf("%i",&vector2[i]);
+int PideNumero(){
+    int n;
+    pf("Dame un numero\n");
+    sf("%i",&n);
+    return n;
 
 }
 
-pf("\n");
-pf("Tus vectores son:\n");
-for(i=0;i<n;i++){
-	pf ("%i      %i\n", vector1[i],vector2[i]);
+void RellenaVector(float vector[max], int fila){
+    int i;
+    pf("Ingresa las componentes de tu vector:\n");
+    for(i=0;i<fila;i++){
+        pf("Componente %i: ",i+1);
+        sf("%f", &vector[i]);
+    }
 }
 
-pf("\n");
-pf("Elige el orden de la resta:\n");
-pf("1)vector1-vector2     2)vector2-vector1\n");
-sf("%i",&op);
-pf("\n");
-
-switch(op){
-	
-	case 1:
-		pf("La resta de tus vectores es: \n");
-		for(i=0;i<n;i++){
-		resta[i]=vector1[i]-vector2[i];
-		pf("%i\n",resta[i]);
-		}
-	break;
-	
-	case 2:
-		pf("La resta de tus vectores es: \n");
-		for(i=0;i<n;i++){
-		resta[i]=vector2[i]-vector1[i];
-		pf("%i\n",resta[i]);
-		}
-	break;
-	
-	default:
-		pf("Ingresa una opcion valida (1 o 2)");//Solo falta el ciclo por si la opcion es invalida y q vuelva a preguntar
-	break;
+void RestaDeVectores1(float vectorResta[max],float vec1[max],float vec2[max],int fila){
+    int i;
+pf("Tu vector resultante es: \n");
+    for(i=0;i<fila;i++){
+        vectorResta[i]=vec1[i]-vec2[i];
+        pf("%.2f \n", vectorResta[i]);
+    }
 }
 
-
-return 0;
+void RestaDeVectores2(float vectorResta[max],float vec1[max],float vec2[max],int fila){
+    int i;
+pf("Tu vector resultante es: \n");
+    for(i=0;i<fila;i++){
+        vectorResta[i]=vec2[i]-vec1[i];
+        pf("%.2f \n", vectorResta[i]);
+    }
 }

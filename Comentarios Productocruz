@@ -1,0 +1,61 @@
+#include <stdio.h>
+
+#define pf printf 
+#define sf scanf 
+
+/* Variables globales: vectores A y B de 3 dimensiones, un vector para el resultado
+   y dos variables auxiliares para los ciclos y validaciones. */
+int A[3], B[3], resultado[3];
+int i, dimensiones;
+
+// Declaración de funciones
+void leerVectores();
+/* leerVectores solicita los valores de los dos vectores A y B, y los guarda directamente 
+    en los arreglos globales. No retorna ningún valor. */
+void productoCruz();
+/* productoCruz calcula el producto cruzado entre los vectores A y B.
+   Almacena el resultado en el arreglo resultado[]. No regresa ningún valor. */
+
+// Función principal
+int main() {
+    pf("Cálculo del producto cruz entre dos vectores\n");
+    pf("¿Cuántas dimensiones tienen los vectores? ");
+    sf("%i", &dimensiones);
+
+/* Condicional que verifica si los vectores tienen 3 dimensiones. Si no son de 3 dimensiones, 
+    el producto cruz no está definido. */
+    if (dimensiones != 3) {
+        pf("No se puede calcular el producto cruz. Solo está definido en 3 dimensiones.\n");
+    } else {
+        leerVectores();  // Se solicitan los valores para ambos vectores
+        productoCruz();  // Se calcula el producto cruz entre A y B
+        pf("El producto cruz A x B es: (%i, %i, %i)\n", resultado[0], resultado[1], resultado[2]);
+    }
+
+    return 0;
+}
+
+/* Esta función solicita al usuario los valores de los vectores A y B utilizando un ciclo for 
+    que recorre sus tres componentes. */
+void leerVectores() {
+    pf("Ingresa los valores del vector A:\n");
+    for (i = 0; i < 3; i++) {
+        pf("A[%i]: ", i + 1);
+        sf("%i", &A[i]);
+    }
+
+    pf("Ingresa los valores del vector B:\n");
+    for (i = 0; i < 3; i++) {
+        pf("B[%i]: ", i + 1);
+        sf("%i", &B[i]);
+    }
+}
+
+/* Se realiza el cálculo del producto cruz entre A y B. Cada componente del vector resultado se obtiene 
+    mediante el método de cofactores con la fórmula: 
+    resultado[0] = A2*B3 - A3*B2, resultado[1] = A3*B1 - A1*B3,  . */
+void productoCruz() {
+    resultado[0] = A[1] * B[2] - A[2] * B[1];
+    resultado[1] = A[2] * B[0] - A[0] * B[2];
+    resultado[2] = A[0] * B[1] - A[1] * B[0];
+}

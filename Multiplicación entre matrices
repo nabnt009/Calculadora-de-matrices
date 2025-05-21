@@ -1,4 +1,4 @@
-// Multiplicaci�on entre matrices
+// Multiplicacion entre matrices
 #include <stdio.h>
 
 #define max 10
@@ -22,7 +22,7 @@ int main() {
 
     if (filasA <= 0 || filasA > max || columnasA <= 0 || columnasA > max) {
         printf("Dimensiones invalidas para la Matriz A.\n");
-        return 1; // Terminar con error
+        return 1; 
     }
 
     printf("\nMatriz A:\n");
@@ -49,7 +49,8 @@ int main() {
     multiplicarMatrices(matrizA, filasA, columnasA, matrizB, filasB, columnasB, matrizResultado);
 
    
-    if ( columnasA ==  filasB) {
+    if ( columnasA ==  filasB) // esta es la condicion para que las matrices se puedan multiplicar// 
+    {
         printf ("\n");
         imprimirMatriz (matrizResultado, filasA, columnasB);
     }
@@ -58,7 +59,7 @@ int main() {
 }
 void leerMatriz(int matriz[max][max], int filas, int columnas) {
     printf("Introduce los elementos de la matriz:\n");
-    for (i = 0; i < filas; i++) {
+    for (i = 0; i < filas; i++) // de esta forma se leen los elementos de las matrices// {
         for (j = 0; j < columnas; j++) {
             printf("Elemento [%d][%d]: ", i, j);
             scanf("%d", &matriz[i][j]);
@@ -67,7 +68,8 @@ void leerMatriz(int matriz[max][max], int filas, int columnas) {
 }
 
 
-void imprimirMatriz(int matriz[][max], int filas, int columnas) {
+void imprimirMatriz(int matriz[][max], int filas, int columnas) //despues de guardar los elementos ya multiplicados, los imprime aqui// 
+    {
     printf("Matriz resultante:\n");
     for (i = 0; i < filas; i++) {
         for ( j = 0; j < columnas; j++) {
@@ -83,7 +85,7 @@ void multiplicarMatrices(int matrizA[][max], int filasA, int columnasA,
                          int matrizResultado[][max]) {
 
     if (columnasA != filasB) {
-        printf("Error: El n�mero de columnas de la primera matriz debe ser igual al n�mero de filas de la segunda matriz para poder multiplicarlas.\n");
+        printf("Error: El numero de columnas de la primera matriz debe ser igual al numero de filas de la segunda matriz para poder multiplicarlas.\n");
         return; 
     }
 
@@ -95,7 +97,8 @@ void multiplicarMatrices(int matrizA[][max], int filasA, int columnasA,
     }
 
 
-    for ( i = 0; i < filasA; i++) { 
+    for ( i = 0; i < filasA; i++) //son los ciclos necesarios para que la multilicacion de matrices sea de filas por columnas//
+    { 
         for (j = 0; j < columnasB; j++) {
             for (k = 0; k < columnasA; k++) {
                 matrizResultado[i][j] += matrizA[i][k] * matrizB[k][j];

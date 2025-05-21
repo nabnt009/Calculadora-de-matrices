@@ -3,40 +3,45 @@
 #define pf printf
 #define max 30
 
-int PideNumero();
+//RESTA DE VECTORES
+int PideNumero();                 //Declaracion de funciones para: pedir numero, rellenar los vectores y realizar la suma de los vectores
 void RellenaVector(float vector[max], int fila);
 void RestaDeVectores1(float vectorResta[max],float vec1[max],float vec2[max],int fila);
 void RestaDeVectores2(float vectorResta[max],float vec1[max],float vec2[max],int fila);
 
 int main(void){
-    int a;
+    int a;  //"a" será la dimension de los vectores a RESTAR
    
     pf("Ingresa dimension de tus vectores:\n");
-    a=PideNumero();
+    a=PideNumero();    //Pide y escanea el valor de la dimension con la funcion PideNumero
     
-    float Resta[a];
-    
+    float Resta[a];    //Definimos el vector de la suma de dimension "a"
+
+    //Pedimos los datos del primer vector
     pf("Ingresa vector 1:\n");
-    float vector1[a];
-    RellenaVector(vector1,a);
-    
+    float vector1[a];       
+    RellenaVector(vector1,a);   //Usamos la funcion rellenar vector
+
+    //Pedimos los datos del primer vector
     float vector2[a];
     pf("Ingresa vector 2:\n");
-    RellenaVector(vector2,a);
+    RellenaVector(vector2,a);  //Usamos la funcion rellenar vector
 
+    //Pedimos el orden de la resta de los dos vectores y escaneamos la eleccion en la variable op
     pf("Indica el orden de tu resta\n");
     int op;
     pf("Opcion 1)vector 1 - Vector 2\n");
     pf("Opcion 2)vector 2 - Vector 1\n");
     sf("%i",&op);
 
+    //Segun sea para indicar el caso de la resta
     switch(op){
         case 1:
-        RestaDeVectores1(Resta,vector1,vector2,a);
+        RestaDeVectores1(Resta,vector1,vector2,a); //Funcion de la resta de vec1-vec2 con nuestras variables correspondientes
         break;
 
         case 2:
-        RestaDeVectores2(Resta,vector1,vector2,a);
+        RestaDeVectores2(Resta,vector1,vector2,a); //Funcion de la resta de vec2-vec1 con nuestras variables correspondientes
         break;
 
         default:
@@ -50,7 +55,7 @@ int main(void){
 
 int PideNumero(){
     int n;
-    pf("Dame un numero\n");
+    pf("Dame un numero\n");   //Funcion para pedir un numero que será almacenado en una variable "n"
     sf("%i",&n);
     return n;
 
@@ -58,22 +63,22 @@ int PideNumero(){
 
 void RellenaVector(float vector[max], int fila){
     int i;
-    pf("Ingresa las componentes de tu vector:\n");
+    pf("Ingresa las componentes de tu vector:\n");    //Pide valor uno a uno y lo almacena en un vector de dimension = fila 
     for(i=0;i<fila;i++){
         pf("Componente %i: ",i+1);
         sf("%f", &vector[i]);
     }
 }
-
+//Funcion de la resta de vec1-vec2
 void RestaDeVectores1(float vectorResta[max],float vec1[max],float vec2[max],int fila){
     int i;
-pf("Tu vector resultante es: \n");
+pf("Tu vector resultante es: \n");         
     for(i=0;i<fila;i++){
         vectorResta[i]=vec1[i]-vec2[i];
         pf("%.2f \n", vectorResta[i]);
     }
 }
-
+//Funcion de la resta de vec2-vec1
 void RestaDeVectores2(float vectorResta[max],float vec1[max],float vec2[max],int fila){
     int i;
 pf("Tu vector resultante es: \n");

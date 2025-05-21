@@ -3,53 +3,56 @@
 #define pf printf
 #define max 30
 
-int PideNumero();
+//SUMA DE VECTORES
+int PideNumero();                   //Declaracion de funciones para: pedir numero, rellenar los vectores y realizar la suma de los vectores
 void RellenaVector(float vector[max], int fila);
 void SumaDeVectores(float vectorsuma[max],float vec1[max],float vec2[max],int fila);
 
 int main(void){
-    int a;
+    int a;  //"a" será la dimension de los vectores a sumar
    
     pf("Ingresa dimension de tus vectores:\n");
-    a=PideNumero();
+    a=PideNumero(); //Pide y escanea el valor de la funcion con la funcion PideNumero
     
-    float Suma[a];
+    float Suma[a];  //Definimos el vector de la suma de dimension "a"
     
+    //Pedimos los datos del primer vector
     pf("Ingresa vector 1:\n");
-    float vector1[a];
-    RellenaVector(vector1,a);
+    float vector1[a];  
+    RellenaVector(vector1,a); //Usamos la funcion rellenar vector
     
+    //Pedimos los datos del segundo vector
     float vector2[a];
     pf("Ingresa vector 2:\n");
-    RellenaVector(vector2,a);
+    RellenaVector(vector2,a);  //Usamos la funcion rellenar vector y se ocupan las variables del vector donde se guardaran y la dimension del vector(filas)
     
-    SumaDeVectores(Suma,vector1,vector2,a);
+    SumaDeVectores(Suma,vector1,vector2,a);  //Usamos la funcoin de la suma de vectores donde ocuparemos el vector1, vector2 y la suma se guardará en suma
 
     return 0;
 }
 
 int PideNumero(){
     int n;
-    pf("Dame un numero\n");
+    pf("Dame un numero\n"); //Funcion para pedir un numero que será almacenado en una variable "n"
     sf("%i",&n);
     return n;
 
 }
-
-void RellenaVector(float vector[max], int fila){
+//Funcion para pedir los datos de un vector
+void RellenaVector(float vector[max], int fila){  
     int i;
-    pf("Ingresa las componentes de tu vector:\n");
+    pf("Ingresa las componentes de tu vector:\n"); //Pide valor uno a uno y lo almacena en un vector de dimension = fila 
     for(i=0;i<fila;i++){
         pf("Componente %i: ",i+1);
         sf("%f", &vector[i]);
     }
 }
-
+//Funcion para realizar la suma de los vectores
 void SumaDeVectores(float vectorsuma[max],float vec1[max],float vec2[max],int fila){
     int i;
 pf("Tu vector resultante es: \n");
     for(i=0;i<fila;i++){
-        vectorsuma[i]=vec1[i]+vec2[i];
+        vectorsuma[i]=vec1[i]+vec2[i]; //Guarda el resultado de la operacion de cada componente enn un vector suma
         pf("%.2f \n", vectorsuma[i]);
     }
 }

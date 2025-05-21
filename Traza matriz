@@ -4,14 +4,19 @@
 #define sf scanf 
 #define max 30
 
-// Variables globales
+/* Variables globales: declaración de la matriz, número de filas y columnas, 
+    variables auxiliares para los ciclos. */
 int matriz[max][max];
 int filas, columnas;
 int i, j;
 
-// Inicialización de funciones
+// Declaración de funciones
 void leerMatriz();
+/* leerMatriz lee los elementos de la matriz. Es tipo void porque no devuelve
+    ningún valor, solamente almacena los elementos */
 int obtenerTraza(int traza);
+/* obtenerTraza calcula la traza de la matriz. Es tipo int ya que devuelve un 
+    número entero. */
 
 // Función principal
 int main() {
@@ -20,6 +25,8 @@ int main() {
     pf("Ingresa el número de columnas: ");
     sf("%i", &columnas);
 
+
+// Mediante la estructura condicional if else verifica que la matriz sea cuadrada.
     if (filas != columnas) {
         pf("No se puede obtener la traza. La matriz no es cuadrada.\n");
     } else {
@@ -31,7 +38,8 @@ int main() {
     return 0;
 }
 
-// Definición de funciones
+/* Se ingresan y almacenan los datos de la matriz a través de dos cilos for, 
+    uno  para las filas y otro para las columnas. */
 void leerMatriz() {
     for (i = 0; i < filas; i++) {
         for (j = 0; j < columnas; j++) {
@@ -41,6 +49,9 @@ void leerMatriz() {
     }
 }
 
+/* Primero se inicializa la traza en cero, pues nos servirá de acumulador. 
+    Por medio de un ciclo for se recorre la diagonal principal de la matriz 
+    (mismo índice en filas y columnas) y lo suma a traza. */
 int obtenerTraza(int traza) {
     traza = 0;
     for (i = 0; i < filas; i++) {

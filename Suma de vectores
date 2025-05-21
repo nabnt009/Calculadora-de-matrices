@@ -12,7 +12,7 @@ int main(void){
     int a;  //"a" será la dimension de los vectores a sumar
    
     pf("Ingresa dimension de tus vectores:\n");
-    a=PideNumero(); //Pide y escanea el valor de la funcion con la funcion PideNumero
+    a=PideNumero(); //Pide y escanea el valor de la dimension con la funcion PideNumero
     
     float Suma[a];  //Definimos el vector de la suma de dimension "a"
     

@@ -53,6 +53,6 @@ void SumaDeVectores(float vectorsuma[max],float vec1[max],float vec2[max],int fi
 pf("Tu vector resultante es: \n");
     for(i=0;i<fila;i++){
         vectorsuma[i]=vec1[i]+vec2[i]; //Guarda el resultado de la operacion de cada componente enn un vector suma
-        pf("%.2f \n", vectorsuma[i]);
+        pf("%.2f   ", vectorsuma[i]);
     }
 }
